@@ -10,6 +10,7 @@
     <?php
         include_once './settings/db.php';
         include_once './Objects/Manager.php';
+        
         $manager = new manager($db);
         $manager->createTable();
 
