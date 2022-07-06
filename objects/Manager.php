@@ -1,7 +1,7 @@
 <?php
 
 
-class Manager {
+class manager {
 
     // Attributes
     private $bdd;
@@ -21,6 +21,25 @@ class Manager {
     }
 
     // Methods
+    public function createTable(){
+
+        $sql = $this->bdd->prepare ("CREATE TABLE IF NOT EXISTS`bataille`.`joueur` ( 
+            `id` INT NOT NULL PRIMARY KEY, 
+            `joueur` VARCHAR(50) NOT NULL , 
+            `life` INT NOT NULL , 
+            `defence` INT NOT NULL 
+            ) ENGINE = InnoDB"); 
+        $sql->execute();
+
+        $sql = $this->bdd->prepare ("CREATE TABLE IF NOT EXISTS `bataille`.`vehicul` ( 
+            `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+            `vehicul` VARCHAR(50) NOT NULL , 
+            `life` INT NOT NULL , 
+            `defence` INT NOT NULL 
+            ) ENGINE = InnoDB");
+        $sql->execute();
+    }
+
     public function create($perso)
     {
         if (get_class($perso) == "Warrior") {
