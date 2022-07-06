@@ -13,7 +13,29 @@
         
         $manager = new manager($db);
         $manager->createTable();
+        $heros =[
+        ['nomHeros'=>'hulk',
+        'vie'=>200,
+        'attaque' => 50
+        ],
 
+        ['nomHeros' => 'captain',
+        'vie'=>150,
+        'attaque' => 35
+        ],
+
+        ['nomHeros' => 'black pantere',
+        'vie' => 225,
+        'attaque' => 25
+        ],
+
+        ['nomHeros' => 'hawkeye',
+        'vie' => 100,
+        'attaque' => 30
+        ],
+    ];
+
+    print_r($heros);
     ?>
 </body>
 </html>
