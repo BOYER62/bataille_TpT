@@ -23,32 +23,31 @@ class manager {
     // Methods
     public function createTable(){
 
-        $sql = $this -> bdd -> prepare ("CREATE TABLE IF NOT EXISTS `bataille`.`joueur` ( 
+        $sql = $this -> bdd -> prepare ("CREATE TABLE IF NOT EXISTS `bataille`.`player` ( 
             `Id` INT NOT NULL AUTO_INCREMENT , 
-            `nomJoueur` VARCHAR(50) NOT NULL , 
-            `vie` INT NOT NULL , 
-            `attaque` INT NOT NULL , 
-            `level` INT NOT NULL,
-            `gif` VARCHAR(50) NOT NULL , 
+            `namePlayer` VARCHAR(50) NOT NULL , 
+            `level` INT NOT NULL ,  
             PRIMARY KEY (`Id`)) ENGINE = InnoDB;");
 
         $sql->execute();
 
         $sql = $this -> bdd -> prepare ("CREATE TABLE IF NOT EXISTS `bataille`.`vehicule` ( 
             `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
-            `nomVehicule` VARCHAR(50) NOT NULL , 
-            `defence` INT NOT NULL ,
-            `image` VARCHAR (50) NOT NULL
+            `nameVehicule` VARCHAR(50) NOT NULL , 
+            `def` INT NOT NULL ,
+            `img` VARCHAR (50) NOT NULL
             )");
 
         $sql->execute();
 
         $sql = $this -> bdd -> prepare ("CREATE TABLE IF NOT EXISTS `bataille`.`heros` ( 
             `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
-            `nomHeros` VARCHAR(50) NOT NULL , 
-            `vie` INT NOT NULL ,
-            `attaque` VARCHAR (50) NOT NULL,
-            `gif` VARCHAR (50) NOT NULL
+            `nameHeros` VARCHAR(50) NOT NULL , 
+            `life` INT NOT NULL ,
+            `attack` INT NOT NULL,
+            `img` VARCHAR (50) NOT NULL,
+            'def' INT NOT NULL ,
+            'crit' INT NOT NULL
             )");
 
         $sql -> execute();

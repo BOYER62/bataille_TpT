@@ -1,4 +1,5 @@
 <?php
+include_once './Manager.php';
 
 class heros {
 
