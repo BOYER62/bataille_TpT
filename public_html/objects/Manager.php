@@ -46,41 +46,35 @@ class manager {
             `life` INT NOT NULL ,
             `attack` INT NOT NULL,
             `img` VARCHAR (50) NOT NULL,
-            'def' INT NOT NULL ,
-            'crit' INT NOT NULL
+            `def` INT NOT NULL ,
+            `crit` INT NOT NULL
             )");
 
         $sql -> execute();
     }
 
-    public function create($perso)
+    public function initHeros($player){
+        $sql = $this->bdd->prepare("
+            INSERT INTO `heros` 
+            (`nameHeros`, `life` , `attack` , `def` , `img`, `crit`) 
+            VALUES 
+            (:nameHeros, :life,  :attack , :def , :img , :crit)
+        "); // var_dump($sql);
+
+        // Secure
+        $sql->bindValue(":nameHeros", $player['nameHeros'], PDO::PARAM_STR);
+        $sql->bindValue(":life", $player['life'], PDO::PARAM_INT);
+        $sql->bindValue(":attack", $player['attack'], PDO::PARAM_INT);
+        $sql->bindValue(":def", $player['def'], PDO::PARAM_INT);
+        $sql->bindValue(":img", $player['img'], PDO::PARAM_STR);
+        $sql->bindValue(":crit", $player['crit'], PDO::PARAM_INT);
+
+        $sql->execute();        
+}
+
+    public function create($player)
     {
-        if (get_class($perso) == "Warrior") {
-
-            $sql = $this->bdd->prepare("
-                INSERT INTO `warrior` 
-                (`life`, `def`, `sword`) 
-                VALUES 
-                (:life, :def, :sword)
-            "); // var_dump($sql);
-
-            // Secure
-            $sql->bindValue(":life", $perso->getLife(), PDO::PARAM_INT);
-            $sql->bindValue(":def", $perso->getDef(), PDO::PARAM_INT);
-            $sql->bindValue(":sword", $perso->getSword(), PDO::PARAM_INT);
-
-            $sql->execute();
-
-        }
-
-        // elseif Wizard
-        // ...
-
-        // elseif Archer
-        // ...
-
-        // else unknown object
-        // ...
+        
     }
 
     public function read($perso)

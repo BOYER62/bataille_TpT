@@ -1,58 +1,74 @@
 <?php
-include_once './Manager.php';
 
 class heros {
 
     // Attributes
-    private $nomHeros;
-    private $vie;
-    private $attaque;
-    private $gif;
+    private $nameHeros;
+    private $life;
+    private $attack;
+    private $img;
+    private $def;
+    private $crit;
 
     // Constructor
-    public function __construct($nomHeros = 'Coulson', $vie=300, $attaque= 1, $gif="coulson.gif")
+    public function __construct($nameHeros = 'Coulson', $life=300, $attack= 1, $img="coulson.gif", $def=1, $crit=1)
     {
-        $this -> setNomHeros($nomHeros);
-        $this -> setVie($vie);
-        $this -> setAttaque($attaque);
-        $this -> setGif($gif);
+        $this -> setNameHeros($nameHeros);
+        $this -> setLife($life);
+        $this -> setAttack($attack);
+        $this -> setimg($img);
+        $this -> setDef($def);
+        $this -> setCrit($crit);
+
 
     }
 
     // Getters
-    public function getNomHeros(){
-        return $this-> nomHeros;
+    public function getNameHeros(){
+        return $this-> nameHeros;
     }
-    public function getVie(){
-        return $this-> vie;
+    public function getLife(){
+        return $this-> life;
     }
-    public function getAttaque(){
-        return $this-> attaque;
+    public function getAttack(){
+        return $this-> attack;
     }
-    public function getGif(){
-        return $this-> gif;
+    public function getImg(){
+        return $this-> img;
+    }
+    public function getDef(){
+        return $this-> def;
+    }
+    public function getCrit(){
+        return $this-> crit;
     }
 
     // Setters
-    public function setNomHeros($nomHeros)
+    public function setNameHeros($nameHeros)
     {
-        $this->nomHeros = $nomHeros;
+        $this->nameHeros = $nameHeros;
     }
-    public function setVie($vie)
+    public function setLife($life)
     {
-        $this->vie = $vie;
+        $this->life = $life;
     }
-    public function setattaque($attaque)
+    public function setattack($attack)
     {
-        $this-> attaque = $attaque;
+        $this-> attack = $attack;
     }
-    public function setgif($gif)
+    public function setImg($img)
     {
-        $this->gif = $gif;
+        $this->img = $img;
+    }
+    public function setDef($def)
+    {
+        $this->def = $def;
+    }
+    public function setCrit($crit)
+    {
+        $this->crit = $crit;
     }
 
     // Methods
-    public function initHeros(){
-        
-    }
+    
 }

@@ -9,33 +9,58 @@
 <body>
     <?php
         include_once './settings/db.php';
-        include_once './Objects/Manager.php';
+        include_once './objects/heros.php';
+        include_once './objects/Manager.php';
         
         $manager = new manager($db);
         $manager->createTable();
         $heros =[
-        ['nomHeros'=>'hulk',
-        'vie'=>200,
-        'attaque' => 50
+        ['nameHeros'=>'hulk',
+        'life'=>200,
+        'attack' => 50,
+        'def' => 10,
+        'crit' => 10,
+        'img' => 'hulk-intocrouch.gif'
+        ],
+    
+        ['nameHeros' => 'captain',
+        'life'=>150,
+        'attack' => 35,
+        'def' => 10,
+        'crit' => 10,
+        'img' => 'hulk-intocrouch.gif'
         ],
 
-        ['nomHeros' => 'captain',
-        'vie'=>150,
-        'attaque' => 35
+        ['nameHeros' => 'black pantere',
+        'life' => 225,
+        'attack' => 25,
+        'def' => 10,
+        'crit' => 10,
+        'img' => 'hulk-intocrouch.gif',
         ],
 
-        ['nomHeros' => 'black pantere',
-        'vie' => 225,
-        'attaque' => 25
+        ['nameHeros' => 'hawkeye',
+        'life' => 50,
+        'attack' => 10,
+        'def' => 10,
+        'crit' => 10,
+        'img' => 'hulk-intocrouch.gif'
         ],
 
-        ['nomHeros' => 'hawkeye',
-        'vie' => 100,
-        'attaque' => 30
+        ['nameHeros' => 'iron man',
+        'life' => 100,
+        'attack' => 30,
+        'def' => 10,
+        'crit' => 10,
+        'img' => 'hulk-intocrouch.gif   '
         ],
     ];
+    
+    foreach($heros as $key => $value){
+        $manager = new manager($db);
+        $manager -> initHeros($value);
+    }
 
-    print_r($heros);
     ?>
 </body>
 </html>
