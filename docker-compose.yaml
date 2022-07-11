@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+    db:
+        container_name: database
+        image: mysql:8.0.19
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: bataille
+            MYSQL_USER: user
+            MYSQL_PASSWORD: mdp
+        ports:
+            - 3306
+        # volumes:
+        #     - /data/mysql:/var/lib/mysql
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin:5.0.2
+        restart: always
+        # depends_on:
+        #     - db
+        ports:
+            - 8080:80
+        environment:
+            - PMA_HOST=db
+
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+            - 8081:8080
+
+    public_html:
+        container_name: docker-php
+        build: ./docker
+        restart: always
+        ports:
+            - 80:80
+        volumes:
+            - ./public_html/:/var/www/html/
+
