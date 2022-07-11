@@ -2,9 +2,6 @@
     "scripts": {
         "▶️ docker start": "docker-compose up -d --build",
         "🛑 docker stop": "docker-compose down",
-        "docker terminal": "docker exec -it docker-php /bin/bash"
-    },
-    "dependencies": {
-        "cleave.js": "^1.6.0"
+        "docker terminal": "docker exec -it php /bin/bash"
     }
 }
