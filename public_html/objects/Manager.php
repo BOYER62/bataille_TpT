@@ -40,9 +40,9 @@ class manager {
 
         $sql->execute();
 
-        $sql = $this -> bdd -> prepare ("CREATE TABLE IF NOT EXISTS `bataille`.`heros` ( 
+        $sql = $this -> bdd -> prepare ("CREATE TABLE IF NOT EXISTS `bataille`.`hero` ( 
             `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
-            `name_heros` VARCHAR(50) NOT NULL , 
+            `name_hero` VARCHAR(50) NOT NULL , 
             `life` INT NOT NULL ,
             `attack` INT NOT NULL,
             `img` VARCHAR (50) NOT NULL,
@@ -55,7 +55,7 @@ class manager {
 
     public function initHeros(){
         $heros =[
-            ['name_heros'=>'hulk',
+            ['name_hero'=>'hulk',
             'life'=>200,
             'attack' => 50,
             'def' => 10,
@@ -63,7 +63,7 @@ class manager {
             'img' => 'hulk-intocrouch.gif'
             ],
         
-            ['name_heros' => 'captain',
+            ['name_hero' => 'captain',
             'life'=>150,
             'attack' => 35,
             'def' => 10,
@@ -71,7 +71,7 @@ class manager {
             'img' => 'hulk-intocrouch.gif'
             ],
     
-            ['name_heros' => 'black pantere',
+            ['name_hero' => 'black pantere',
             'life' => 225,
             'attack' => 25,
             'def' => 10,
@@ -79,7 +79,7 @@ class manager {
             'img' => 'hulk-intocrouch.gif',
             ],
     
-            ['name_heros' => 'hawkeye',
+            ['name_hero' => 'hawkeye',
             'life' => 50,
             'attack' => 10,
             'def' => 10,
@@ -87,7 +87,7 @@ class manager {
             'img' => 'hulk-intocrouch.gif'
             ],
     
-            ['name_heros' => 'iron man',
+            ['name_hero' => 'iron man',
             'life' => 100,
             'attack' => 30,
             'def' => 10,
@@ -97,17 +97,16 @@ class manager {
         ];
     
         foreach($heros as $value){
-            var_dump($value);
                
             $sql = $this->bdd->prepare("
-            INSERT INTO `heros` 
-            (`name_heros`, `life` , `attack` , `def` , `img`, `crit`) 
+            INSERT INTO `hero` 
+            (`name_hero`, `life` , `attack` , `def` , `img`, `crit`) 
             VALUES 
             (:nameHeros, :life,  :attack , :def , :img , :crit)
-            "); // var_dump($sql);
+            ");
             
             // Secure
-            $sql->bindValue(":nameHeros", $value['name_heros'], PDO::PARAM_STR);
+            $sql->bindValue(":nameHeros", $value['name_hero'], PDO::PARAM_STR);
             $sql->bindValue(":life", $value['life'], PDO::PARAM_INT);
             $sql->bindValue(":attack", $value['attack'], PDO::PARAM_INT);
             $sql->bindValue(":def", $value['def'], PDO::PARAM_INT);
@@ -118,9 +117,39 @@ class manager {
         }
 }
 
+public function initVehicule(){
+    $vehicule =[
+        ['name_vehicule'=>'Ford Mustang GT350R',
+        'def' => 10,
+        'img' => 'hulk-intocrouch.gif'
+        ],
+    
+        ['name_vehicule' => 'Chevrolet Corvette Z06',
+        'def' => 10,
+        'img' => 'hulk-intocrouch.gif'
+        ],
+    ];
+
+    foreach($vehicule as $value){
+           
+        $sql = $this->bdd->prepare("
+        INSERT INTO `vehicule` 
+        (`name_vehicule`, `def` , `img`) 
+        VALUES 
+        (:nameVehicule, :def , :img)
+        ");
+        
+        // Secure
+        $sql->bindValue(":nameVehicule", $value['name_vehicule'], PDO::PARAM_STR);
+        $sql->bindValue(":def", $value['def'], PDO::PARAM_INT);
+        $sql->bindValue(":img", $value['img'], PDO::PARAM_STR);
+                
+        $sql->execute();        
+    }
+}
     public function create($player)
     {
-        //if (get_class($player) == "player"){
+        if (get_class($player) == "player"){
             print_r('if ok');
             $sql = $this -> bdd -> prepare("INSER INTO 'player' 
             ('name_player', 'level') 
@@ -130,15 +159,39 @@ class manager {
             $sql -> bindValue(":namePlayer", $player->getNamePlayer(), PDO::PARAM_STR);
             $sql -> bindValue(":level", $player->getLevel(), PDO::PARAM_INT);
             $sql -> execute();
-        //}
+        }
     }
 
-    public function read($player)
+    public function read($reload)
     {
-        echo '<pre>';
-        print_r($player);
-        echo '</pre>';
-        // var_dump($perso);
+        switch($reload)
+        {
+            case 'heros' :
+                $sql = $this -> bdd -> prepare ("SELECT * FROM `hero`");
+                $sql -> execute();
+                $heros = $sql->fetchAll(PDO::FETCH_ASSOC);
+                
+                if (count($heros) == 0){
+                    $this -> initHeros();
+                }
+                return $heros;
+                break;
+            case 'vehicule' :
+                $sql = $this -> bdd -> prepare ("SELECT * FROM `vehicule`");
+                $sql -> execute();
+                $vehicule = $sql->fetchAll(PDO::FETCH_ASSOC);
+                if (count($vehicule) == 0){
+                    $this -> initVehicule();
+                }
+                return $vehicule;
+                break;
+            case 'player' :
+                $sql = $this -> bdd -> prepare ("SELECT * FROM `player`");
+                $sql -> execute();
+                $player = $sql->fetchAll(PDO::FETCH_ASSOC);
+                return $player;
+                break;
+        }
     }
 
     public function update($perso)

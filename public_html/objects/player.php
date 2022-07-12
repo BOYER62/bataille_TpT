@@ -2,6 +2,8 @@
 class player {
 
     //attributs
+    private $namePlayer;
+    private $level;
 
 
     //constructor
