@@ -72,7 +72,7 @@ class heros {
     // Methods
     public function hydrate($heros)
     {
-        $this -> setNameHeros($heros['name_heros']);
+        $this -> setNameHeros($heros['name_hero']);
         $this -> setLife($heros['life']);
         $this -> setAttack($heros['attack']);
         $this -> setImg($heros['img']);
