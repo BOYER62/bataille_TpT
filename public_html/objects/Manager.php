@@ -1,5 +1,5 @@
 <?php
-
+include_once './objects/player.php';
 
 class manager {
 
@@ -152,12 +152,16 @@ public function initVehicule(){
         if (get_class($player) == "player"){
             print_r('if ok');
             $sql = $this -> bdd -> prepare("INSER INTO 'player' 
-            ('name_player', 'level') 
+            ('id', 'name_player', 'level') 
             VALUES 
-            (:namePlayer, :level)");
-            
+            (:id, :namePlayer, :level)");
+
+            $sql -> bindValue(":id", $player->getId(),PDO::PARAM_INT);
             $sql -> bindValue(":namePlayer", $player->getNamePlayer(), PDO::PARAM_STR);
             $sql -> bindValue(":level", $player->getLevel(), PDO::PARAM_INT);
+            print_r($sql);
+            echo '</br>';
+            print_r($player);
             $sql -> execute();
         }
     }
@@ -190,6 +194,9 @@ public function initVehicule(){
                 $sql -> execute();
                 $player = $sql->fetchAll(PDO::FETCH_ASSOC);
                 return $player;
+                break;
+            case 'default' :
+                echo 'lecture';
                 break;
         }
     }

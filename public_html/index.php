@@ -11,6 +11,9 @@
 </head>
 <body>
     <?php
+
+use function PHPSTORM_META\type;
+
         include_once './settings/db.php';
         include_once './objects/heros.php';
         include_once './objects/player.php';
@@ -25,11 +28,23 @@
         $vehicule = $manager->read('vehicule');
         $player = $manager->read('player');
 
-        $joueurOne = new player('toto', 0);
+        $joueurOne = new player(100,'toto', 0);
 
         // ----------------------------------ne fonctionne pas
-        //$manager -> create($joueurOne);
-        //$manager -> read($joueurOne); 
+        $manager = new manager($db);
+        $manager -> create($joueurOne);
+        $manager -> read($joueurOne); 
+        echo $heros[0]['life'].' heros 1 </br>'.$heros[1]['life'].' hero 2';
+        while(($heros[0]['life'] >0) and ($heros[1]['life'] > 0))
+        {
+            $heros[0]['life'] = $heros[0]['life']-random_int(0,$heros[0]['attack']);
+            print_r('hero 1 : '.$heros[0]['life']);
+            echo '</br>';
+            $heros[1]['life'] = $heros[1]['life']-random_int(0,$heros[1]['attack']);
+            print_r('hero 2 : '.$heros[1]['life']);
+            echo '</br>';
+
+        }
         // ----------------------------------voir demain
         ?>
     <div class="container">
