@@ -25,27 +25,27 @@ use function PHPSTORM_META\type;
 
         // recovery of values ​​for the initialization of the game
         $heros = $manager->read('heros');
+        $jsonHeros = json_encode($heros);
+        file_put_contents('./asset/json/heros.json', $jsonHeros);
         $vehicule = $manager->read('vehicule');
+        $jsonVehicule = json_encode($vehicule);
+        file_put_contents('./asset/json/vehicule.json', $jsonVehicule);
         $player = $manager->read('player');
+        $jsonPlayer = json_encode($player);
+        file_put_contents('./asset/json/player.json', $jsonPlayer);
 
-        $joueurOne = new player(100,'toto', 0);
+        $joueurOne = new player(0, 'tatas', 0);
 
-        // ----------------------------------ne fonctionne pas
         $manager = new manager($db);
         $manager -> create($joueurOne);
         $manager -> read($joueurOne); 
-        echo $heros[0]['life'].' heros 1 </br>'.$heros[1]['life'].' hero 2';
+        
         while(($heros[0]['life'] >0) and ($heros[1]['life'] > 0))
         {
             $heros[0]['life'] = $heros[0]['life']-random_int(0,$heros[0]['attack']);
-            print_r('hero 1 : '.$heros[0]['life']);
-            echo '</br>';
+            
             $heros[1]['life'] = $heros[1]['life']-random_int(0,$heros[1]['attack']);
-            print_r('hero 2 : '.$heros[1]['life']);
-            echo '</br>';
-
         }
-        // ----------------------------------voir demain
         ?>
     <div class="container">
         <div class="row">
@@ -61,17 +61,17 @@ use function PHPSTORM_META\type;
                             <?php
                             foreach($heros as $value)
                             {
-                                    ?>
-                                    <option>
-                                        <?php echo $value['name_heros']; ?>
+                                ?>
+                                    <option class="nameHero" value="">
+                                        <?php echo $value['name_hero']; ?>
                                     </option>
                                 <?php
                                 }
-                            ?>
+                                ?>
                         </select>
                     </div>
                     <div>
-                        <?php echo '<img src="./images/'.$heros[0]['img'].'" alt="hulk">'; ?>
+                        <?php echo '<img id="nameImg" src="./images/'.$heros[0]['img'].'" alt="hulk">'; ?>
                     </div>
                 </form>
             </div>
@@ -81,5 +81,6 @@ use function PHPSTORM_META\type;
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="./asset/scrypt.js"></script>
 </body>
 </html>

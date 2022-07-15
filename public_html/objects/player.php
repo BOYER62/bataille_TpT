@@ -8,7 +8,7 @@ class player {
 
 
     //constructor
-    public function __construct($id=50, $namePlayer = "Olivier", $level=0)
+    public function __construct($id=0, $namePlayer = "Olivier", $level=0)
     {
         $this -> setId($id);
         $this -> setNamePlayer($namePlayer);

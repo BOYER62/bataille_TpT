@@ -150,18 +150,14 @@ public function initVehicule(){
     public function create($player)
     {
         if (get_class($player) == "player"){
-            print_r('if ok');
-            $sql = $this -> bdd -> prepare("INSER INTO 'player' 
-            ('id', 'name_player', 'level') 
+            $sql = $this -> bdd -> prepare("INSERT INTO `player` 
+            (`id`, `name_player`, `level`) 
             VALUES 
             (:id, :namePlayer, :level)");
 
             $sql -> bindValue(":id", $player->getId(),PDO::PARAM_INT);
             $sql -> bindValue(":namePlayer", $player->getNamePlayer(), PDO::PARAM_STR);
             $sql -> bindValue(":level", $player->getLevel(), PDO::PARAM_INT);
-            print_r($sql);
-            echo '</br>';
-            print_r($player);
             $sql -> execute();
         }
     }
