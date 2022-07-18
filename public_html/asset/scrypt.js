@@ -1,11 +1,17 @@
 const player = document.getElementById('player');
 const optionHero = document.getElementById('selectHeros');
-const nameImg = document.getElementById("nameImg");
+const optionVehicule = document.getElementById('selectVehicule')
+const heroImg = document.getElementById("heroImg");
+const vehiculeImg = document.getElementById("vehiculeImg");
 const requestURLHeros = './asset/json/heros.json';
 const requestURLPlayer = './asset/json/player.json';
 const requestPlayer = new XMLHttpRequest();
 const requestURLVehicule = './asset/json/vehicule.json';
 const requestVehicule = new XMLHttpRequest();
+const life = document.getElementById('life');
+const attack = document.getElementById('attack');
+const def = document.getElementById('defence');
+const defVehicule = document.getElementById('defVehicule');
 
 
 optionHero.addEventListener('change', function()
@@ -16,11 +22,27 @@ optionHero.addEventListener('change', function()
     requestHeros.send();
     requestHeros.onload = function(){
     const jsonHero = requestHeros.response;
-    nameImg.src=`../images/Chara/${jsonHero[index]['img']}`;
+    heroImg.src=`../images/Chara/${jsonHero[index]['img']}`;
+    life.innerHTML = `life : ${jsonHero[index]['life']}`;
+    attack.innerHTML = `attack : ${jsonHero[index]['attack']}`;
+    def.innerHTML = `defence : ${jsonHero[index]['def']}`;
     }
     const index = optionHero.selectedIndex; 
 })
 
+optionVehicule.addEventListener('change', function()
+{
+    const requestVehicule = new XMLHttpRequest();
+    requestVehicule.open('GET', requestURLVehicule);
+    requestVehicule.responseType = 'json';
+    requestVehicule.send();
+    requestVehicule.onload = function(){
+    const jsonVehicule = requestVehicule.response;
+    vehiculeImg.src=`../images/Spaceship/${jsonVehicule[index]['img']}`;
+    defVehicule.innerHTML = `defence : ${jsonVehicule[index]['def']}`;
+    }
+    const index = optionVehicule.selectedIndex; 
+})
 
 requestPlayer.open('GET', requestURLPlayer);
 requestPlayer.responseType = 'json';

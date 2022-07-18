@@ -34,18 +34,18 @@
         $jsonPlayer = json_encode($player);
         file_put_contents('./asset/json/player.json', $jsonPlayer);
 
-        $joueurOne = new player(0, 'tatas', 0);
+        // $joueurOne = new player(0, 'tatas', 0);
 
-        $manager = new manager($db);
-        $manager -> create($joueurOne);
-        $manager -> read($joueurOne); 
+        // $manager = new manager($db);
+        // $manager -> create($joueurOne);
+        // $manager -> read($joueurOne); 
         
-        while(($heros[0]['life'] >0) and ($heros[1]['life'] > 0))
-        {
-            $heros[0]['life'] = $heros[0]['life']-random_int(0,$heros[0]['attack']);
+        // while(($heros[0]['life'] >0) and ($heros[1]['life'] > 0))
+        // {
+        //     $heros[0]['life'] = $heros[0]['life']-random_int(0,$heros[0]['attack']);
             
-            $heros[1]['life'] = $heros[1]['life']-random_int(0,$heros[1]['attack']);
-        }
+        //     $heros[1]['life'] = $heros[1]['life']-random_int(0,$heros[1]['attack']);
+        // }
         ?>
     <div class="container">
         <div class="row">
@@ -71,13 +71,51 @@
                         </select>
                     </div>
                     <div>
-                        <?php echo '<img id="nameImg" src="./images/Chara/'.$heros[0]['img'].'" alt="hulk">'; ?>
+                        <?php echo '<img id="heroImg" src="./images/Chara/'.$heros[0]['img'].'" alt="hulk">'; ?>
+                    </div>
+                    <div>
+                        <p>
+                            Stats of this character :
+                        </p>
+                        <p id="life">
+                            Life : <?php echo $heros[0]['life']; ?>
+                        </p>
+                        <p id="attack">
+                            Attack : <?php echo $heros[0]['attack']; ?>
+                        </p>
+                        <p id="defence">
+                            Defence : <?php echo $heros[0]['def']; ?>
+                        </p>
                     </div>
                 </form>
             </div>
             <div class="col-4"></div>
             <div class="col-4 teamTwo">
-
+                <label for="vehicule" class="form-label mt-4">Choisi t'on vehicule</label>
+                    <select class="form-select" id="selectVehicule">
+                        <?php
+                        foreach($vehicule as $value)
+                        {
+                        ?>
+                            <option class="nameVehicule" value="">
+                                <?php echo $value['name_vehicule']; ?>
+                            </option>
+                        <?php
+                        }
+                        ?>
+                    </select>
+                    
+                    <div>
+                        <?php echo '<img id="vehiculeImg" src="./images/Spaceship/'.$vehicule[0]['img'].'" alt="vehicule">'; ?>
+                    </div>
+                    <div>
+                        <p>
+                            Stats of this character :
+                        </p>
+                        <p id="defVehicule">
+                            defence : <?php echo $vehicule[0]['def']; ?>
+                        </p>
+                    </div>
             </div>
         </div>
     </div>
