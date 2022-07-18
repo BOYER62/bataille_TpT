@@ -12,7 +12,7 @@
 <body>
     <?php
 
-use function PHPSTORM_META\type;
+// use function PHPSTORM_META\type;
 
         include_once './settings/db.php';
         include_once './objects/heros.php';
@@ -71,7 +71,7 @@ use function PHPSTORM_META\type;
                         </select>
                     </div>
                     <div>
-                        <?php echo '<img id="nameImg" src="./images/'.$heros[0]['img'].'" alt="hulk">'; ?>
+                        <?php echo '<img id="nameImg" src="./images/Chara/'.$heros[0]['img'].'" alt="hulk">'; ?>
                     </div>
                 </form>
             </div>

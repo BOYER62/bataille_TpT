@@ -60,7 +60,7 @@ class manager {
             'attack' => 50,
             'def' => 10,
             'crit' => 10,
-            'img' => 'hulk-intocrouch.gif'
+            'img' => 'hulk-stand.gif'
             ],
         
             ['name_hero' => 'captain',
@@ -68,23 +68,23 @@ class manager {
             'attack' => 35,
             'def' => 10,
             'crit' => 10,
-            'img' => 'hulk-intocrouch.gif'
+            'img' => 'captain-america-stand.gif'
             ],
     
-            ['name_hero' => 'black pantere',
+            ['name_hero' => 'thanos',
             'life' => 225,
             'attack' => 25,
             'def' => 10,
             'crit' => 10,
-            'img' => 'hulk-intocrouch.gif',
+            'img' => 'thanos-stand.gif',
             ],
     
-            ['name_hero' => 'hawkeye',
+            ['name_hero' => 'spider man',
             'life' => 50,
             'attack' => 10,
             'def' => 10,
             'crit' => 10,
-            'img' => 'hulk-intocrouch.gif'
+            'img' => 'Spiderman-stand.gif'
             ],
     
             ['name_hero' => 'iron man',
@@ -92,7 +92,7 @@ class manager {
             'attack' => 30,
             'def' => 10,
             'crit' => 10,
-            'img' => 'hulk-intocrouch.gif   '
+            'img' => 'Iron-man.gif   '
             ],
         ];
     
@@ -119,14 +119,14 @@ class manager {
 
 public function initVehicule(){
     $vehicule =[
-        ['name_vehicule'=>'Ford Mustang GT350R',
+        ['name_vehicule'=>'vehicule_one',
         'def' => 10,
-        'img' => 'hulk-intocrouch.gif'
+        'img' => 'vehicule_One.png'
         ],
     
-        ['name_vehicule' => 'Chevrolet Corvette Z06',
+        ['name_vehicule' => 'vehicule_two',
         'def' => 10,
-        'img' => 'hulk-intocrouch.gif'
+        'img' => 'Ship_1-removebg-preview.png'
         ],
     ];
 
