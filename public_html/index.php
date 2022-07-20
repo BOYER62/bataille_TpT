@@ -50,19 +50,20 @@
     <div class="container">
         <div class="row">
             <div class="col-4 teamOne">
-                <form action="" method="$_GET">
+                <form action="index.php?valid" method="POST" name="valide">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="player" placeholder="Nom de joueur">
-                        <label for="player">Joueur</label>
+                        <input type="text" class="form-control" id="player" name="player" placeholder="Nom de joueur">
+                        <label for="player">New Joueur</label>
                     </div>
+                    <!-- select joueur déjà existant -->
                     <div class="form-group">
                         <label for="heros" class="form-label mt-4">Choisi t'on héros</label>
-                        <select class="form-select" id="selectHeros">
+                        <select class="form-select" id="selectHeros" name="selectHero">
                             <?php
                             foreach($heros as $value)
                             {
                                 ?>
-                                    <option class="nameHero" value="">
+                                    <option class="nameHero" value="<?php echo $value['id']; ?>">
                                         <?php echo $value['name_hero']; ?>
                                     </option>
                                 <?php
@@ -87,17 +88,19 @@
                             Defence : <?php echo $heros[0]['def']; ?>
                         </p>
                     </div>
-                </form>
+
             </div>
-            <div class="col-4"></div>
+            <div class="col-4" id="center">
+                <button type="submit" class="btn btn-primary">Lunch</button>
+            </div>
             <div class="col-4 teamTwo">
                 <label for="vehicule" class="form-label mt-4">Choisi t'on vehicule</label>
-                    <select class="form-select" id="selectVehicule">
+                    <select class="form-select" id="selectVehicule" name="selectVehicule">
                         <?php
                         foreach($vehicule as $value)
                         {
                         ?>
-                            <option class="nameVehicule" value="">
+                            <option class="nameVehicule" value="<?php echo $value['id']; ?>">
                                 <?php echo $value['name_vehicule']; ?>
                             </option>
                         <?php
@@ -117,8 +120,28 @@
                         </p>
                     </div>
             </div>
+                    </form>
         </div>
     </div>
+    <?php
+    if(isset($_GET['valid']))
+    {
+        echo 'rentrer dans le if';
+
+        //traitement des données
+        print_r ($_POST);
+
+        $playerOne = new manager($db);
+        $playerOne = $manager -> create($_POST);
+        
+
+       // $playerFive = new manager()
+       //$playerFive->create("player");
+
+    } else {
+
+    }
+    ?>
     <script type="text/javascript" src="./asset/scrypt.js"></script>
 </body>
 </html>

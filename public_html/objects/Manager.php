@@ -26,7 +26,9 @@ class manager {
         $sql = $this -> bdd -> prepare ("CREATE TABLE IF NOT EXISTS `bataille`.`player` ( 
             `id` INT NOT NULL AUTO_INCREMENT , 
             `name_player` VARCHAR(50) NOT NULL , 
-            `level` INT NOT NULL ,  
+            `level` INT NOT NULL ,
+            `hero_id` INT NOT NULL ,
+            `vehicule_id` INT NOT NULL ,
             PRIMARY KEY (`id`)) ENGINE = InnoDB;");
 
         $sql->execute();
@@ -52,118 +54,114 @@ class manager {
 
         $sql -> execute();
     }
-
     public function initHeros(){
-        $heros =[
-            ['name_hero'=>'hulk',
-            'life'=>200,
-            'attack' => 50,
+            $heros =[
+                ['name_hero'=>'hulk',
+                'life'=>200,
+                'attack' => 50,
+                'def' => 10,
+                'crit' => 10,
+                'img' => 'hulk-stand.gif'
+                ],
+            
+                ['name_hero' => 'captain',
+                'life'=>150,
+                'attack' => 35,
+                'def' => 10,
+                'crit' => 10,
+                'img' => 'captain-america-stand.gif'
+                ],
+        
+                ['name_hero' => 'thanos',
+                'life' => 225,
+                'attack' => 25,
+                'def' => 10,
+                'crit' => 10,
+                'img' => 'thanos-stand.gif',
+                ],
+        
+                ['name_hero' => 'spider man',
+                'life' => 50,
+                'attack' => 10,
+                'def' => 10,
+                'crit' => 10,
+                'img' => 'Spiderman-stand.gif'
+                ],
+        
+                ['name_hero' => 'iron man',
+                'life' => 100,
+                'attack' => 30,
+                'def' => 10,
+                'crit' => 10,
+                'img' => 'Iron-man.gif   '
+                ],
+            ];
+        
+            foreach($heros as $value){
+                
+                $sql = $this->bdd->prepare("
+                INSERT INTO `hero` 
+                (`name_hero`, `life` , `attack` , `def` , `img`, `crit`) 
+                VALUES 
+                (:nameHeros, :life,  :attack , :def , :img , :crit)
+                ");
+                
+                // Secure
+                $sql->bindValue(":nameHeros", $value['name_hero'], PDO::PARAM_STR);
+                $sql->bindValue(":life", $value['life'], PDO::PARAM_INT);
+                $sql->bindValue(":attack", $value['attack'], PDO::PARAM_INT);
+                $sql->bindValue(":def", $value['def'], PDO::PARAM_INT);
+                $sql->bindValue(":img", $value['img'], PDO::PARAM_STR);
+                $sql->bindValue(":crit", $value['crit'], PDO::PARAM_INT);
+                
+                $sql->execute();        
+            }
+    }
+    public function initVehicule(){
+        $vehicule =[
+            ['name_vehicule'=>'vehicule_one',
             'def' => 10,
-            'crit' => 10,
-            'img' => 'hulk-stand.gif'
+            'img' => 'vehicule_One.png'
             ],
         
-            ['name_hero' => 'captain',
-            'life'=>150,
-            'attack' => 35,
+            ['name_vehicule' => 'vehicule_two',
             'def' => 10,
-            'crit' => 10,
-            'img' => 'captain-america-stand.gif'
-            ],
-    
-            ['name_hero' => 'thanos',
-            'life' => 225,
-            'attack' => 25,
-            'def' => 10,
-            'crit' => 10,
-            'img' => 'thanos-stand.gif',
-            ],
-    
-            ['name_hero' => 'spider man',
-            'life' => 50,
-            'attack' => 10,
-            'def' => 10,
-            'crit' => 10,
-            'img' => 'Spiderman-stand.gif'
-            ],
-    
-            ['name_hero' => 'iron man',
-            'life' => 100,
-            'attack' => 30,
-            'def' => 10,
-            'crit' => 10,
-            'img' => 'Iron-man.gif   '
+            'img' => 'Ship_1-removebg-preview.png'
             ],
         ];
-    
-        foreach($heros as $value){
-               
+
+        foreach($vehicule as $value){
+            
             $sql = $this->bdd->prepare("
-            INSERT INTO `hero` 
-            (`name_hero`, `life` , `attack` , `def` , `img`, `crit`) 
+            INSERT INTO `vehicule` 
+            (`name_vehicule`, `def` , `img`) 
             VALUES 
-            (:nameHeros, :life,  :attack , :def , :img , :crit)
+            (:nameVehicule, :def , :img)
             ");
             
             // Secure
-            $sql->bindValue(":nameHeros", $value['name_hero'], PDO::PARAM_STR);
-            $sql->bindValue(":life", $value['life'], PDO::PARAM_INT);
-            $sql->bindValue(":attack", $value['attack'], PDO::PARAM_INT);
+            $sql->bindValue(":nameVehicule", $value['name_vehicule'], PDO::PARAM_STR);
             $sql->bindValue(":def", $value['def'], PDO::PARAM_INT);
             $sql->bindValue(":img", $value['img'], PDO::PARAM_STR);
-            $sql->bindValue(":crit", $value['crit'], PDO::PARAM_INT);
-            
+                    
             $sql->execute();        
         }
-}
-
-public function initVehicule(){
-    $vehicule =[
-        ['name_vehicule'=>'vehicule_one',
-        'def' => 10,
-        'img' => 'vehicule_One.png'
-        ],
-    
-        ['name_vehicule' => 'vehicule_two',
-        'def' => 10,
-        'img' => 'Ship_1-removebg-preview.png'
-        ],
-    ];
-
-    foreach($vehicule as $value){
-           
-        $sql = $this->bdd->prepare("
-        INSERT INTO `vehicule` 
-        (`name_vehicule`, `def` , `img`) 
-        VALUES 
-        (:nameVehicule, :def , :img)
-        ");
-        
-        // Secure
-        $sql->bindValue(":nameVehicule", $value['name_vehicule'], PDO::PARAM_STR);
-        $sql->bindValue(":def", $value['def'], PDO::PARAM_INT);
-        $sql->bindValue(":img", $value['img'], PDO::PARAM_STR);
-                
-        $sql->execute();        
     }
-}
-    public function create($player)
-    {
-        if (get_class($player) == "player"){
+    public function create($player){
             $sql = $this -> bdd -> prepare("INSERT INTO `player` 
-            (`id`, `name_player`, `level`) 
+            (`id`, `name_player`, `level`, `hero_id`, `vehicule_id`) 
             VALUES 
-            (:id, :namePlayer, :level)");
+            (:id, :namePlayer, :level, :hero_id, :vehicule_id)");
 
             $sql -> bindValue(":id", $player->getId(),PDO::PARAM_INT);
             $sql -> bindValue(":namePlayer", $player->getNamePlayer(), PDO::PARAM_STR);
             $sql -> bindValue(":level", $player->getLevel(), PDO::PARAM_INT);
+            $sql -> bindValue(":hero_id", $player-> getHeroId(), PDO::PARAM_INT);
+            $sql -> bindValue(":vehicule_id", $player-> getVehiculeId(), PDO::PARAM_INT);
             $sql -> execute();
         }
-    }
 
-    public function read($reload)
-    {
+    public function read($reload){
         switch($reload)
         {
             case 'heros' :

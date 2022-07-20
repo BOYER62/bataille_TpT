@@ -5,6 +5,8 @@ class player {
     private $id;
     private $namePlayer;
     private $level;
+    private $hero_id;
+    private $vehicule_id;
 
 
     //constructor
@@ -27,6 +29,14 @@ class player {
     public function getLevel()
     {
         return $this->level;
+    }
+    public function getHeroId()
+    {
+        return $this->heroId;
+    }
+    public function getVehiculeId()
+    {
+        return $this->vehiculeId;
     }
 
     //setter
