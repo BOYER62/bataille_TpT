@@ -28,7 +28,7 @@ optionHero.addEventListener('change', function()
     def.innerHTML = `defence : ${jsonHero[index]['def']}`;
     }
     const index = optionHero.selectedIndex; 
-})
+});
 
 optionVehicule.addEventListener('change', function()
 {
@@ -42,7 +42,7 @@ optionVehicule.addEventListener('change', function()
     defVehicule.innerHTML = `defence : ${jsonVehicule[index]['def']}`;
     }
     const index = optionVehicule.selectedIndex; 
-})
+});
 
 requestPlayer.open('GET', requestURLPlayer);
 requestPlayer.responseType = 'json';
@@ -75,6 +75,3 @@ requestVehicule.send();
   
 //     //console.log(jsonHero[0]["name_hero"]);
 // });
-
-
-

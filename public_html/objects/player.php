@@ -5,16 +5,18 @@ class player {
     private $id;
     private $namePlayer;
     private $level;
-    private $hero_id;
-    private $vehicule_id;
+    private $heroId;
+    private $vehiculeId;
 
 
     //constructor
-    public function __construct($id=0, $namePlayer = "Olivier", $level=0)
+    public function __construct($namePlayer = "Olivier", $level = 0, $heroId = 0, $vehiculeId = 0)
     {
-        $this -> setId($id);
+        // $this -> setId($id);
         $this -> setNamePlayer($namePlayer);
         $this -> setLevel($level);
+        $this -> setHeroId($heroId);
+        $this -> setVehiculeId($vehiculeId);
     }
 
     //getter
@@ -51,6 +53,14 @@ class player {
     public function setLevel($level)
     {
         $this -> level = $level;
+    }
+    public function setHeroId($heroId)
+    {
+        $this -> heroId = $heroId;
+    }
+    public function setVehiculeId($vehiculeId)
+    {
+        $this -> vehiculeId = $vehiculeId;
     }
 
     public function hydrate($player)

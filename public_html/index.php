@@ -50,9 +50,9 @@
     <div class="container">
         <div class="row">
             <div class="col-4 teamOne">
-                <form action="index.php?valid" method="POST" name="valide">
+                <form action="combat.php" method="POST" name="valide">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="player" name="player" placeholder="Nom de joueur">
+                        <input type="text" class="form-control" id="player" value="" name="player" placeholder="Nom de joueur">
                         <label for="player">New Joueur</label>
                     </div>
                     <!-- select joueur déjà existant -->
@@ -123,25 +123,6 @@
                     </form>
         </div>
     </div>
-    <?php
-    if(isset($_GET['valid']))
-    {
-        echo 'rentrer dans le if';
-
-        //traitement des données
-        print_r ($_POST);
-
-        $playerOne = new manager($db);
-        $playerOne = $manager -> create($_POST);
-        
-
-       // $playerFive = new manager()
-       //$playerFive->create("player");
-
-    } else {
-
-    }
-    ?>
     <script type="text/javascript" src="./asset/scrypt.js"></script>
 </body>
 </html>

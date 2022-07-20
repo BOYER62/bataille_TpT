@@ -148,18 +148,19 @@ class manager {
         }
     }
     public function create($player){
-            $sql = $this -> bdd -> prepare("INSERT INTO `player` 
-            (`id`, `name_player`, `level`, `hero_id`, `vehicule_id`) 
-            VALUES 
-            (:id, :namePlayer, :level, :hero_id, :vehicule_id)");
+        $sql = $this -> bdd -> prepare("INSERT INTO `player` 
+        (`name_player`, `level`, `hero_id`, `vehicule_id`) 
+        VALUES 
+        (:namePlayer, :level, :hero_id, :vehicule_id)");
 
-            $sql -> bindValue(":id", $player->getId(),PDO::PARAM_INT);
-            $sql -> bindValue(":namePlayer", $player->getNamePlayer(), PDO::PARAM_STR);
-            $sql -> bindValue(":level", $player->getLevel(), PDO::PARAM_INT);
-            $sql -> bindValue(":hero_id", $player-> getHeroId(), PDO::PARAM_INT);
-            $sql -> bindValue(":vehicule_id", $player-> getVehiculeId(), PDO::PARAM_INT);
-            $sql -> execute();
-        }
+        //$sql -> bindValue(":id", $player->getId(),PDO::PARAM_INT);
+        $sql -> bindValue(":namePlayer", $player->getNamePlayer(), PDO::PARAM_STR);
+        $sql -> bindValue(":level", $player->getLevel(), PDO::PARAM_INT);
+        $sql -> bindValue(":hero_id", $player-> getHeroId(), PDO::PARAM_INT);
+        $sql -> bindValue(":vehicule_id", $player-> getVehiculeId(), PDO::PARAM_INT);
+
+        $sql -> execute();
+    }
 
     public function read($reload){
         switch($reload)
