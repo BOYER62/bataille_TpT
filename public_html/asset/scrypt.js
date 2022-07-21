@@ -5,9 +5,7 @@ const heroImg = document.getElementById("heroImg");
 const vehiculeImg = document.getElementById("vehiculeImg");
 const requestURLHeros = './asset/json/heros.json';
 const requestURLPlayer = './asset/json/player.json';
-const requestPlayer = new XMLHttpRequest();
 const requestURLVehicule = './asset/json/vehicule.json';
-const requestVehicule = new XMLHttpRequest();
 const life = document.getElementById('life');
 const attack = document.getElementById('attack');
 const def = document.getElementById('defence');
@@ -16,40 +14,56 @@ const defVehicule = document.getElementById('defVehicule');
 
 optionHero.addEventListener('change', function()
 {
-    const requestHeros = new XMLHttpRequest();
-    requestHeros.open('GET', requestURLHeros);
-    requestHeros.responseType = 'json';
-    requestHeros.send();
-    requestHeros.onload = function(){
-    const jsonHero = requestHeros.response;
-    heroImg.src=`../images/Chara/${jsonHero[index]['img']}`;
-    life.innerHTML = `life : ${jsonHero[index]['life']}`;
-    attack.innerHTML = `attack : ${jsonHero[index]['attack']}`;
-    def.innerHTML = `defence : ${jsonHero[index]['def']}`;
-    }
-    const index = optionHero.selectedIndex; 
+    let myRequest = new Request(requestURLHeros);       
+    
+    fetch(myRequest)
+    .then(function(response) {
+        if(response.ok) {
+            response.json().then(function(responseThen) {
+            
+                const index = optionHero.selectedIndex;
+                const jsonHero = responseThen;
+                heroImg.src=`../images/Chara/${jsonHero[index]['img']}`;
+                life.innerHTML = `life : ${jsonHero[index]['life']}`;
+                attack.innerHTML = `attack : ${jsonHero[index]['attack']}`;
+                def.innerHTML = `defence : ${jsonHero[index]['def']}`;
+            
+                console.log(responseThen);    
+            });
+        } else {
+            console.log('Mauvaise réponse du réseau');
+        }
+    })
+    .catch(function(error) {
+      console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
+    });
 });
 
 optionVehicule.addEventListener('change', function()
 {
-    const requestVehicule = new XMLHttpRequest();
-    requestVehicule.open('GET', requestURLVehicule);
-    requestVehicule.responseType = 'json';
-    requestVehicule.send();
-    requestVehicule.onload = function(){
-    const jsonVehicule = requestVehicule.response;
-    vehiculeImg.src=`../images/Spaceship/${jsonVehicule[index]['img']}`;
-    defVehicule.innerHTML = `defence : ${jsonVehicule[index]['def']}`;
-    }
-    const index = optionVehicule.selectedIndex; 
+
+    let myRequest = new Request(requestURLVehicule);       
+    
+    fetch(myRequest)
+    .then(function(response) {
+        if(response.ok) {
+            response.json().then(function(responseThen) {
+            
+                const index = optionVehicule.selectedIndex;
+                const jsonVehicule = responseThen;
+                vehiculeImg.src=`../images/Spaceship/${jsonVehicule[index]['img']}`;
+                def.innerHTML = `defence : ${jsonVehicule[index]['def']}`;
+                console.log(responseThen);    
+            });
+        } else {
+            console.log('Mauvaise réponse du réseau');
+        }
+    })
+    .catch(function(error) {
+      console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
+    });
 });
 
-requestPlayer.open('GET', requestURLPlayer);
-requestPlayer.responseType = 'json';
-requestPlayer.send();
-requestVehicule.open('GET', requestURLVehicule);
-requestVehicule.responseType = 'json';
-requestVehicule.send();
 
 // optionHero.addEventListener('change', function()
 // {

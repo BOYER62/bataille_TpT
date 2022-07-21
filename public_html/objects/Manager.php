@@ -93,7 +93,47 @@ class manager {
                 'attack' => 30,
                 'def' => 10,
                 'crit' => 10,
-                'img' => 'Iron-man.gif   '
+                'img' => 'Iron-man.gif'
+                ],
+
+                ['name_hero' => 'psylocke',
+                'life' => 80,
+                'attack' => 8,
+                'def' => 9,
+                'crit' => 10,
+                'img' => 'psylocke.gif'
+                ],
+
+                ['name_hero' => 'magneto',
+                'life' => 950,
+                'attack' => 20,
+                'def' => 10,
+                'crit' => 10,
+                'img' => 'magneto.gif'
+                ],
+
+                ['name_hero' => 'Dr doom',
+                'life' => 70,
+                'attack' => 12,
+                'def' => 14,
+                'crit' => 10,
+                'img' => 'Dr-doom.gif'
+                ],
+
+                ['name_hero' => 'wolverine',
+                'life' => 100,
+                'attack' => 22,
+                'def' => 7,
+                'crit' => 10,
+                'img' => 'wolvie-stand.gif'
+                ],
+
+                ['name_hero' => 'blackheart',
+                'life' => 130,
+                'attack' => 20,
+                'def' => 20,
+                'crit' => 10,
+                'img' => 'blackheart-stand.gif'
                 ],
             ];
         
