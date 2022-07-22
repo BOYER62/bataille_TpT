@@ -105,7 +105,7 @@ class manager {
                 ],
 
                 ['name_hero' => 'magneto',
-                'life' => 950,
+                'life' => 90,
                 'attack' => 20,
                 'def' => 10,
                 'crit' => 10,

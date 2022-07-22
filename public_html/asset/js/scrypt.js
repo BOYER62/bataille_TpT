@@ -11,7 +11,6 @@ const attack = document.getElementById('attack');
 const def = document.getElementById('defence');
 const defVehicule = document.getElementById('defVehicule');
 
-
 optionHero.addEventListener('change', function()
 {
     let myRequest = new Request(requestURLHeros);       

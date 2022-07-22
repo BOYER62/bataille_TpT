@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+    body
+{
+    background-image: url('../../images/Background/pixel-art-city-Idees-designs-photo.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} 
+.battle{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 2px solid red;
+    width: 100%;
+    height: 70vh;
+}
+.teamOne, .teamTwo{
+    width: 45%;
+    height: 60%;
+    border: 2px solid red;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.slots{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.slot{
+    width: 120px;
+    height: 120px;
+    margin: 0 5px 0 5px;
+    border: 2px solid red;
+}
+.imgVaisseauTeamOne, .imgVaisseauTeamTwo{
+    border: 2px solid red;
+    width: 100%;
+    height: 40%;
+    position: relative;
+    bottom: 0px;
+}
+button{
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0);
+    border: 0px solid rgba(255, 255, 255, 0);
+}
+button img{
+    width: 60px;
+    height: 60px;
+}
+.battleDetails{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 20%;
+    border: 2px solid red;
+}
