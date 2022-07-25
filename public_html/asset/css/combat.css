@@ -63,3 +63,7 @@ button img{
     height: 20%;
     border: 2px solid red;
 }
+.reverse{
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}

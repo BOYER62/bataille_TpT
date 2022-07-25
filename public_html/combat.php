@@ -48,13 +48,13 @@ file_put_contents('./asset/json/player.json', $jsonPlayer);
     
     <div class="teamTwo">
         <div class="slots">
-            <img class="slot slot6" src="" alt="slot6">
-            <img class="slot slot7" src="" alt="slot7">
-            <img class="slot slot8" src="" alt="slot8">
-            <img class="slot slot9" src="" alt="slot9">
-            <img class="slot slot10" src="" alt="slot10">
+            <img class="slot slot6 reverse" src="" alt="slot6">
+            <img class="slot slot7 reverse" src="" alt="slot7">
+            <img class="slot slot8 reverse" src="" alt="slot8">
+            <img class="slot slot9 reverse" src="" alt="slot9">
+            <img class="slot slot10 reverse" src="" alt="slot10">
         </div>
-        <div id="imgVaisseauTeamTwo" class="imgVaisseauTeamTwo"><img src="" alt=""></div> 
+        <div id="imgVaisseauTeamTwo" class="imgVaisseauTeamTwo reverse"><img src="" alt=""></div> 
     </div>
 </div>
 <button><img src="./images/misc/attack-icon-18.jpg" alt="startFight"></button>
