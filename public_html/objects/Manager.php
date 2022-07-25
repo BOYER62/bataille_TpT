@@ -47,9 +47,10 @@ class manager {
             `name_hero` VARCHAR(50) NOT NULL , 
             `life` INT NOT NULL ,
             `attack` INT NOT NULL,
-            `img` VARCHAR (50) NOT NULL,
             `def` INT NOT NULL ,
-            `crit` INT NOT NULL
+            `img` VARCHAR (50) NOT NULL ,
+            `img_attack` VARCHAR (50) NOT NULL ,
+            `img_crit`  VARCHAR (50) NOT NULL
             )");
 
         $sql -> execute();
@@ -61,7 +62,9 @@ class manager {
                 'attack' => 50,
                 'def' => 10,
                 'crit' => 10,
-                'img' => 'hulk-stand.gif'
+                'img' => 'hulk-stand.gif',
+                'img_attack' => 'hulk-attack.gif',
+                'img_crit' => 'hulk-crit.gif'
                 ],
             
                 ['name_hero' => 'captain',
@@ -69,7 +72,9 @@ class manager {
                 'attack' => 35,
                 'def' => 10,
                 'crit' => 10,
-                'img' => 'captain-america-stand.gif'
+                'img' => 'captain-america-stand.gif',
+                'img_attack' => 'captain-america-attack.gif', 
+                'img_crit' => 'captain-america-crit.gif'
                 ],
         
                 ['name_hero' => 'thanos',
@@ -78,6 +83,8 @@ class manager {
                 'def' => 10,
                 'crit' => 10,
                 'img' => 'thanos-stand.gif',
+                'img_attack' => '', 
+                'img_crit' => ''
                 ],
         
                 ['name_hero' => 'spider man',
@@ -85,7 +92,9 @@ class manager {
                 'attack' => 10,
                 'def' => 10,
                 'crit' => 10,
-                'img' => 'Spiderman-stand.gif'
+                'img' => 'Spiderman-stand.gif',
+                'img_attack' => '', 
+                'img_crit' => ''
                 ],
         
                 ['name_hero' => 'iron man',
@@ -93,7 +102,9 @@ class manager {
                 'attack' => 30,
                 'def' => 10,
                 'crit' => 10,
-                'img' => 'Iron-man.gif'
+                'img' => 'Iron-man-stand.gif',
+                'img_attack' => '', 
+                'img_crit' => ''
                 ],
 
                 ['name_hero' => 'psylocke',
@@ -101,7 +112,9 @@ class manager {
                 'attack' => 8,
                 'def' => 9,
                 'crit' => 10,
-                'img' => 'psylocke.gif'
+                'img' => 'psylocke-stand.gif',
+                'img_attack' => '', 
+                'img_crit' => ''
                 ],
 
                 ['name_hero' => 'magneto',
@@ -109,7 +122,9 @@ class manager {
                 'attack' => 20,
                 'def' => 10,
                 'crit' => 10,
-                'img' => 'magneto.gif'
+                'img' => 'Magneto-stand.gif',
+                'img_attack' => '', 
+                'img_crit' => ''
                 ],
 
                 ['name_hero' => 'Dr doom',
@@ -117,7 +132,9 @@ class manager {
                 'attack' => 12,
                 'def' => 14,
                 'crit' => 10,
-                'img' => 'Dr-doom.gif'
+                'img' => 'Dr-doom-stand.gif',
+                'img_attack' => '', 
+                'img_crit' => ''
                 ],
 
                 ['name_hero' => 'wolverine',
@@ -125,7 +142,9 @@ class manager {
                 'attack' => 22,
                 'def' => 7,
                 'crit' => 10,
-                'img' => 'wolvie-stand.gif'
+                'img' => 'wolvie-stand.gif',
+                'img_attack' => '', 
+                'img_crit' => ''
                 ],
 
                 ['name_hero' => 'blackheart',
@@ -133,7 +152,9 @@ class manager {
                 'attack' => 20,
                 'def' => 20,
                 'crit' => 10,
-                'img' => 'blackheart-stand.gif'
+                'img' => 'blackheart-stand.gif',
+                'img_attack' => 'blackheart-attack.gif', 
+                'img_crit' => 'black-crit.gif'
                 ],
             ];
         
@@ -141,9 +162,9 @@ class manager {
                 
                 $sql = $this->bdd->prepare("
                 INSERT INTO `hero` 
-                (`name_hero`, `life` , `attack` , `def` , `img`, `crit`) 
+                (`name_hero`, `life` , `attack` , `def` , `img`, `img_attack`, `img_crit`) 
                 VALUES 
-                (:nameHeros, :life,  :attack , :def , :img , :crit)
+                (:nameHeros, :life,  :attack , :def , :img , :imgAttack, :imgCrit)
                 ");
                 
                 // Secure
@@ -152,7 +173,8 @@ class manager {
                 $sql->bindValue(":attack", $value['attack'], PDO::PARAM_INT);
                 $sql->bindValue(":def", $value['def'], PDO::PARAM_INT);
                 $sql->bindValue(":img", $value['img'], PDO::PARAM_STR);
-                $sql->bindValue(":crit", $value['crit'], PDO::PARAM_INT);
+                $sql->bindValue(":imgAttack", $value['img_attack'], PDO::PARAM_STR);
+                $sql->bindValue(":imgCrit", $value['img_crit'], PDO::PARAM_STR);
                 
                 $sql->execute();        
             }

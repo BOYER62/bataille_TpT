@@ -5,8 +5,9 @@ const requestURLHeros = './asset/json/heros.json';
 const requestURLPlayer = './asset/json/player.json';
 const requestURLVehicule = './asset/json/vehicule.json';
 const slot = document.querySelectorAll(".slot");
-const imgVaisseauTeamOne = document.getElementById("imgVaisseauTeamOne");
-const imgVaisseauTeamTwo = document.getElementById("imgVaisseauTeamTwo");
+const imgVaisseauTeamOne = document.getElementById("vaisseauOne");
+const imgVaisseauTeamTwo = document.getElementById("vaisseauTwo");
+const battleDetails = document.getElementById('battleDetails');
 let attack;
 let def;
 let defVehicule;
@@ -26,16 +27,38 @@ fetch(myRequestPlayer)
             responseThen.forEach (function(value) {
                 if (value['name_player'] == affiche("player")){
                     valueHero = [value['hero_id'], value['level']];
-                    console.log(value['vehicule_id']);
-
-                    //recuperer id_vaiseau du player
-                    imgVaisseauTeamOne.src = './images/Spaceship/' + value['vehicule_id'];
                     return valueHero;
                 }
             });
+
+
+            // get vehicule from player and enable this 
+            let myRequestVehicule = new Request(requestURLVehicule);
+            
+            fetch(myRequestVehicule)
+            .then(function(response) {
+                if(response.ok) {
+                    response.json().then(function(responseThen) {   
+
+                        responseThen.forEach (function(value) {
+                            console.log('forech vehicule');
+                            if (value['id'] ==  affiche("selectVehicule")){
+                                imgVaisseauTeamOne.src = './images/Spaceship/' + value['img'];
+                            } else {
+                                imgVaisseauTeamTwo.src = './images/Spaceship/' + value['img'];
+                            }
+                        });
+                    });
+                } else {
+                    console.log('Mauvaise réponse du réseau');
+                }
+            })
+            .catch(function(error) {
+            console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
+            });
            
 
-            // recupereration des données du perso team Two
+            // recupereration des données du perso team
             let myRequestHeros = new Request(requestURLHeros);   
 
             fetch(myRequestHeros)
@@ -44,8 +67,8 @@ fetch(myRequestPlayer)
                     response.json().then(function(responseThen) {   
                         
                         // variables get size of teams 
-                        let maxPlayerTeamOne = affiche("teamOneNumber"); // 2 est l'équivalent du nombre de player choisir pour la team 1 
-                        let maxPlayerTeamTwo = affiche("teamTwoNumber"); // 2 est l'équivalent du nombre de player choisir pour la team 2
+                        let maxPlayerTeamOne = affiche("teamOneNumber"); // nombre de player choisir pour la team 1 
+                        let maxPlayerTeamTwo = affiche("teamTwoNumber"); // nombre de player choisir pour la team 2
                         // variables counter
                         let a = 0;
                         let b = 0;
@@ -61,7 +84,10 @@ fetch(myRequestPlayer)
                                     'name_hero':value['name_hero'],
                                     'life':value['life'],
                                     'attack':value['attack'],
-                                    'def':value['def']
+                                    'def':value['def'],
+                                    'img':value['img'],
+                                    'img_attack':value['img_attack'],
+                                    'img_crit':value['img_crit']
                                     });
 
                                     slot[c].src = './images/Chara/' + value['img'];
@@ -86,8 +112,11 @@ fetch(myRequestPlayer)
                                         'name_hero':value['name_hero'],
                                         'life':value['life'],
                                         'attack':value['attack'],
-                                        'def':value['def']
-                                        });
+                                        'def':value['def'],
+                                        'img':value['img'],
+                                        'img_attack':value['img_attack'],
+                                        'img_crit':value['img_crit']
+                                    });
                                         slot[d].src = './images/Chara/' + value['img'];
                                         console.log(slot[d]);
                                         a++;
@@ -100,7 +129,10 @@ fetch(myRequestPlayer)
                                         'name_hero':value['name_hero'],
                                         'life':value['life'],
                                         'attack':value['attack'],
-                                        'def':value['def']
+                                        'def':value['def'],
+                                        'img':value['img'],
+                                        'img_attack':value['img_attack'],
+                                        'img_crit':value['img_crit']
                                         });
                                         slot[c].src = './images/Chara/' + value['img'];
                                         console.log(slot[c]);
@@ -116,86 +148,10 @@ fetch(myRequestPlayer)
                         console.log(teamTwo);
 
 
-
-
-
+                        fight();
 
                        
-
-
-                        // lancement du combat
-                        if (getRandomInt(2) == 1){
-                            while (teamOne.length != 0 && teamTwo.length != 0){
-
-                                let testIdTeamOne = getRandomInt(teamOne.length);
-                                let testIdTeamTwo = getRandomInt(teamTwo.length);
-
-                                let attackTeamOne = getRandomInt(teamOne[testIdTeamOne]['attack']);
-                                let attackTeamTwo = getRandomInt(teamTwo[testIdTeamTwo]['attack']);
-
-                                // joueur 2 attack
-                                teamOne[testIdTeamOne]['life'] = teamOne[testIdTeamOne]['life'] - attackTeamTwo;
-                                console.log(teamTwo[testIdTeamTwo]['name_hero'] + ' attack de ' + attackTeamTwo + ' sur ' + teamOne[testIdTeamOne]['name_hero'] + ' il lui reste ' + teamOne[testIdTeamOne]['life'] );
-
-                                //joueur 1 attack
-                                teamTwo[testIdTeamTwo]['life'] = teamTwo[testIdTeamTwo]['life'] - attackTeamOne;
-                                console.log(teamOne[testIdTeamOne]['name_hero'] + ' attack de ' + attackTeamOne + ' sur ' + teamTwo[testIdTeamTwo]['name_hero'] + ' il lui reste ' + teamTwo[testIdTeamTwo]['life'] );
-
-                                function filterByLife(obj) {
-                                    console.log(obj.life);
-                                    // Si c'est un nombre
-                                    if (obj.life > 0 ) {
-                                    return true;
-                                    } else {
-                                    console.log('false');
-                                    return false;
-                                    }
-                                }
-                                
-                                teamOne = teamOne.filter(filterByLife);
-                                console.log('Tableau teamOne filtré', teamOne);
-
-                                teamTwo = teamTwo.filter(filterByLife);
-                                console.log('Tableau teamTwo filtré', teamTwo);
-                                
-                            }
-                        } else {
-                            console.log('else');
-
-                            while (teamOne.length != 0 && teamTwo.length != 0){
-
-                                let testIdTeamOne = getRandomInt(teamOne.length);
-                                let testIdTeamTwo = getRandomInt(teamTwo.length);
-
-                                let attackTeamOne = getRandomInt(teamOne[testIdTeamOne]['attack']);
-                                let attackTeamTwo = getRandomInt(teamTwo[testIdTeamTwo]['attack']);
-
-                                //joueur 1 attack
-                                teamTwo[testIdTeamTwo]['life'] = teamTwo[testIdTeamTwo]['life'] - attackTeamOne;
-                                console.log(teamOne[testIdTeamOne]['name_hero'] + ' attack de ' + attackTeamOne + ' sur ' + teamTwo[testIdTeamTwo]['name_hero'] + ' il lui reste ' + teamTwo[testIdTeamTwo]['life'] );
-                                // joueur 2 attack
-                                teamOne[testIdTeamOne]['life'] = teamOne[testIdTeamOne]['life'] - attackTeamTwo;
-                                console.log(teamTwo[testIdTeamTwo]['name_hero'] + ' attack de ' + attackTeamTwo + ' sur ' + teamOne[testIdTeamOne]['name_hero'] + ' il lui reste ' + teamOne[testIdTeamOne]['life'] );
-
-                                function filterByLife(obj) {
-                                    console.log(obj.life);
-                                    // Si c'est un nombre
-                                    if (obj.life > 0 ) {
-                                    return true;
-                                    } else {
-                                    console.log('false');
-                                    return false;
-                                    }
-                                }
-                                
-                                teamOne = teamOne.filter(filterByLife);      
-                                console.log('Tableau teamOne filtré', teamOne);
-
-                                teamTwo = teamTwo.filter(filterByLife);      
-                                console.log('Tableau teamTwo filtré', teamTwo);  
-                                
-                            }
-                        }
+                       
                     });
                 } else {
                     console.log('Mauvaise réponse du réseau');
@@ -220,6 +176,3 @@ console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message)
     //const index = optionVehicule.selectedIndex; 
 
 
-// notes 
-// check le vaisseau. Si le vaisseau et le premier alors la team opposée aura l'autre 
-// gestion affichage en fonction du hero 

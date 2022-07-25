@@ -21,6 +21,8 @@ include_once './settings/db.php';
 <input type="hidden" value="<?php echo $_POST['player'] ?>" id="player">
 <input type="hidden" value="<?php echo $_POST['teamOneNumber'] ?>" id="teamOneNumber">
 <input type="hidden" value="<?php echo $_POST['teamTwoNumber'] ?>" id="teamTwoNumber">
+<input type="hidden" value="<?php echo $_POST['selectVehicule'] ?>" id="selectVehicule">
+
 
 <?php
 //traitement des données     
@@ -43,7 +45,7 @@ file_put_contents('./asset/json/player.json', $jsonPlayer);
             <img class="slot slot4" src="" alt="slot4">
             <img class="slot slot5" src="" alt="slot5">
         </div>
-        <div id="imgVaisseauTeamOne" class="imgVaisseauTeamOne"><img src="" alt=""></div>
+        <div id="imgVaisseauTeamOne" class="imgVaisseauTeamOne reverse"><img id="vaisseauOne" src="" alt=""></div>
     </div>
     
     <div class="teamTwo">
@@ -54,11 +56,11 @@ file_put_contents('./asset/json/player.json', $jsonPlayer);
             <img class="slot slot9 reverse" src="" alt="slot9">
             <img class="slot slot10 reverse" src="" alt="slot10">
         </div>
-        <div id="imgVaisseauTeamTwo" class="imgVaisseauTeamTwo reverse"><img src="" alt=""></div> 
+        <div id="imgVaisseauTeamTwo" class="imgVaisseauTeamTwo"><img id="vaisseauTwo" src="" alt=""></div> 
     </div>
 </div>
 <button><img src="./images/misc/attack-icon-18.jpg" alt="startFight"></button>
-<div class="battleDetails">
+<div class="battleDetails" id="battleDetails">
     <!--text deroulement-->
 </div>
 
