@@ -46,7 +46,10 @@ file_put_contents('./asset/json/player.json', $jsonPlayer);
             <img class="slot slot5" src="" alt="slot5">
         </div>
         <div id="imgVaisseauTeamOne" class="imgVaisseauTeamOne reverse"><img id="vaisseauOne" src="" alt=""></div>
+        <div class="imgVictoryTeamOne hidden" id="imgVictoryTeamOne">
+        </div>
     </div>
+    
     
     <div class="teamTwo">
         <div class="slots">
@@ -57,9 +60,11 @@ file_put_contents('./asset/json/player.json', $jsonPlayer);
             <img class="slot slot10 reverse" src="" alt="slot10">
         </div>
         <div id="imgVaisseauTeamTwo" class="imgVaisseauTeamTwo"><img id="vaisseauTwo" src="" alt=""></div> 
+        <div class="imgVictoryTeamTwo hidden" id="imgVictoryTeamTwo" >
+        </div>
     </div>
 </div>
-<button><img src="./images/misc/attack-icon-18.jpg" alt="startFight"></button>
+<button id="startFight"><img src="./images/misc/attack-icon-18.jpg" alt="startFight"></button>
 <div class="battleDetails" id="battleDetails">
     <!--text deroulement-->
 </div>

@@ -8,6 +8,9 @@ const slot = document.querySelectorAll(".slot");
 const imgVaisseauTeamOne = document.getElementById("vaisseauOne");
 const imgVaisseauTeamTwo = document.getElementById("vaisseauTwo");
 const battleDetails = document.getElementById('battleDetails');
+const startFight = document.getElementById('startFight');
+const imgVictoryTeamOne = document.getElementById('imgVictoryTeamOne');
+const imgVictoryTeamTwo = document.getElementById('imgVictoryTeamTwo');
 let attack;
 let def;
 let defVehicule;
@@ -147,10 +150,9 @@ fetch(myRequestPlayer)
                         console.log(teamOne);
                         console.log(teamTwo);
 
-
-                        fight();
-
-                       
+                        startFight.addEventListener('click', function(){
+                            fight();
+                        });
                        
                     });
                 } else {

@@ -83,8 +83,8 @@ class manager {
                 'def' => 10,
                 'crit' => 10,
                 'img' => 'thanos-stand.gif',
-                'img_attack' => '', 
-                'img_crit' => ''
+                'img_attack' => 'thanos-attack.gif', 
+                'img_crit' => 'thanos-crit.gif'
                 ],
         
                 ['name_hero' => 'spider man',
@@ -93,8 +93,8 @@ class manager {
                 'def' => 10,
                 'crit' => 10,
                 'img' => 'Spiderman-stand.gif',
-                'img_attack' => '', 
-                'img_crit' => ''
+                'img_attack' => 'spiderman-attack.gif', 
+                'img_crit' => 'spiderman-crit.gif'
                 ],
         
                 ['name_hero' => 'iron man',
@@ -103,8 +103,8 @@ class manager {
                 'def' => 10,
                 'crit' => 10,
                 'img' => 'Iron-man-stand.gif',
-                'img_attack' => '', 
-                'img_crit' => ''
+                'img_attack' => 'iron-man-attack.gif', 
+                'img_crit' => 'iron-man-crit.gif'
                 ],
 
                 ['name_hero' => 'psylocke',
@@ -113,8 +113,8 @@ class manager {
                 'def' => 9,
                 'crit' => 10,
                 'img' => 'psylocke-stand.gif',
-                'img_attack' => '', 
-                'img_crit' => ''
+                'img_attack' => 'psylocke-attack.gif', 
+                'img_crit' => 'psylocke-crit.gif'
                 ],
 
                 ['name_hero' => 'magneto',
@@ -123,8 +123,8 @@ class manager {
                 'def' => 10,
                 'crit' => 10,
                 'img' => 'Magneto-stand.gif',
-                'img_attack' => '', 
-                'img_crit' => ''
+                'img_attack' => 'magneto-attack.gif', 
+                'img_crit' => 'magneto-crit.gif'
                 ],
 
                 ['name_hero' => 'Dr doom',
@@ -133,8 +133,8 @@ class manager {
                 'def' => 14,
                 'crit' => 10,
                 'img' => 'Dr-doom-stand.gif',
-                'img_attack' => '', 
-                'img_crit' => ''
+                'img_attack' => 'drdoom-attack.gif', 
+                'img_crit' => 'doom-crit.gif'
                 ],
 
                 ['name_hero' => 'wolverine',
@@ -143,8 +143,8 @@ class manager {
                 'def' => 7,
                 'crit' => 10,
                 'img' => 'wolvie-stand.gif',
-                'img_attack' => '', 
-                'img_crit' => ''
+                'img_attack' => 'wolvie-attack.gif', 
+                'img_crit' => 'wolvie-crit.gif'
                 ],
 
                 ['name_hero' => 'blackheart',

@@ -55,22 +55,49 @@
                         <input type="text" class="form-control player" id="player" value="" name="player" placeholder="Nom de joueur">
                         <label for="player">New Joueur</label>
                     </div>
-
+                    <div class="displayPlayerSelect">
+                        <div class="form-group">
+                            <label for="player" class="form-label mt-4">Player save</label>
+                            <select class="form-select" id="selectPlayer" name="selectPlayer">
+                                <option class="namePlayer" value="0" selected>choose player</option>
+                                <?php
+                                foreach($player as $value)
+                                {
+                                    ?>
+                                        <option class="namePlayer" value="<?php echo $value['name_player']; ?>">
+                                            <?php echo $value['name_player']; ?>
+                                        </option>
+                                    <?php
+                                    }
+                                    ?>
+                            </select>
+                        </div>
+                    </div>
                     <!-- select joueur déjà existant --> 
                     <div class="displayHeroSelect">
                         <div class="form-group">
                             <label for="heros" class="form-label mt-4">Choisi t'on héros</label>
-                            <select class="form-select" id="selectHeros" name="selectHero">
+                            <select id="selectHeros" name="selectHero">
                                 <?php
+                                $e = 0;
                                 foreach($heros as $value)
                                 {
+                                    if ($e < 1) {
+                                    ?>
+                                        <option class="nameHero" value="<?php echo $value['id']; ?>" selected>
+                                            <?php echo $value['name_hero']; ?>
+                                        </option>
+                                    <?php
+                                    $e++;
+                                    } else {
                                     ?>
                                         <option class="nameHero" value="<?php echo $value['id']; ?>">
                                             <?php echo $value['name_hero']; ?>
                                         </option>
                                     <?php
                                     }
-                                    ?>
+                                }
+                                ?>
                             </select>
                         </div>
                     </div>

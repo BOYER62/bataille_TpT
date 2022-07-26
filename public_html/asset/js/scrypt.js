@@ -1,6 +1,7 @@
 const player = document.getElementById('player');
 const optionHero = document.getElementById('selectHeros');
-const optionVehicule = document.getElementById('selectVehicule')
+const optionPlayer = document.getElementById('selectPlayer');
+const optionVehicule = document.getElementById('selectVehicule');
 const heroImg = document.getElementById("heroImg");
 const vehiculeImg = document.getElementById("vehiculeImg");
 const requestURLHeros = './asset/json/heros.json';
@@ -12,47 +13,39 @@ const def = document.getElementById('defence');
 const defVehicule = document.getElementById('defVehicule');
 
 optionHero.addEventListener('change', function()
-{
-    let myRequest = new Request(requestURLHeros);       
-    
-    fetch(myRequest)
-    .then(function(response) {
-        if(response.ok) {
-            response.json().then(function(responseThen) {
-            
-                const index = optionHero.selectedIndex;
-                const jsonHero = responseThen;
-                heroImg.src=`../images/Chara/${jsonHero[index]['img']}`;
-                life.innerHTML = `life : ${jsonHero[index]['life']}`;
-                attack.innerHTML = `attack : ${jsonHero[index]['attack']}`;
-                def.innerHTML = `defence : ${jsonHero[index]['def']}`;
-            
-                console.log(responseThen);    
-            });
-        } else {
-            console.log('Mauvaise réponse du réseau');
-        }
-    })
-    .catch(function(error) {
-      console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
-    });
+{  
+    hero();
 });
+
 
 optionVehicule.addEventListener('change', function()
 {
+    vehicule();
+});
 
-    let myRequest = new Request(requestURLVehicule);       
+
+optionPlayer.addEventListener('change', function()
+{
+    let myRequest = new Request(requestURLPlayer);       
     
     fetch(myRequest)
     .then(function(response) {
         if(response.ok) {
-            response.json().then(function(responseThen) {
-            
-                const index = optionVehicule.selectedIndex;
-                const jsonVehicule = responseThen;
-                vehiculeImg.src=`../images/Spaceship/${jsonVehicule[index]['img']}`;
-                def.innerHTML = `defence : ${jsonVehicule[index]['def']}`;
-                console.log(responseThen);    
+            response.json().then(function(responseThen) { 
+
+                responseThen.forEach (function(value) {
+
+                    if (value['name_player'] == affiche("selectPlayer")){
+
+                        player.value = optionPlayer.value;
+
+                        optionHero.value =  [value['hero_id']];
+                        hero();
+
+                        optionVehicule.value =  [value['vehicule_id']];
+                        vehicule();
+                    }
+                });
             });
         } else {
             console.log('Mauvaise réponse du réseau');
@@ -62,6 +55,9 @@ optionVehicule.addEventListener('change', function()
       console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
     });
 });
+
+
+
 
 
 // optionHero.addEventListener('change', function()
