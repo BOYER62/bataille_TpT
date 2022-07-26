@@ -39,11 +39,11 @@ file_put_contents('./asset/json/player.json', $jsonPlayer);
 <div class="battle">
     <div class="teamOne">
         <div class="slots">
-            <img class="slot slot1" src="" alt="slot1">
-            <img class="slot slot2" src="" alt="slot2">
-            <img class="slot slot3" src="" alt="slot3">
-            <img class="slot slot4" src="" alt="slot4">
-            <img class="slot slot5" src="" alt="slot5">
+            <img class="slot slot1" src="">
+            <img class="slot slot2" src="">
+            <img class="slot slot3" src="">
+            <img class="slot slot4" src="">
+            <img class="slot slot5" src="">
         </div>
         <div id="imgVaisseauTeamOne" class="imgVaisseauTeamOne reverse"><img id="vaisseauOne" src="" alt=""></div>
         <div class="imgVictoryTeamOne hidden" id="imgVictoryTeamOne">
@@ -53,11 +53,11 @@ file_put_contents('./asset/json/player.json', $jsonPlayer);
     
     <div class="teamTwo">
         <div class="slots">
-            <img class="slot slot6 reverse" src="" alt="slot6">
-            <img class="slot slot7 reverse" src="" alt="slot7">
-            <img class="slot slot8 reverse" src="" alt="slot8">
-            <img class="slot slot9 reverse" src="" alt="slot9">
-            <img class="slot slot10 reverse" src="" alt="slot10">
+            <img class="slot slot6 reverse" src="">
+            <img class="slot slot7 reverse" src="">
+            <img class="slot slot8 reverse" src="">
+            <img class="slot slot9 reverse" src="">
+            <img class="slot slot10 reverse" src="">
         </div>
         <div id="imgVaisseauTeamTwo" class="imgVaisseauTeamTwo"><img id="vaisseauTwo" src="" alt=""></div> 
         <div class="imgVictoryTeamTwo hidden" id="imgVictoryTeamTwo" >

@@ -18,6 +18,10 @@ let teamOne = [];
 let teamTwo = [];
 
 
+
+
+battleDetails.scrollTo(0, document.body.scrollHeight);
+
 // recupereration des donées du perso choisi
 let myRequestPlayer = new Request(requestURLPlayer);       
     
@@ -147,9 +151,6 @@ fetch(myRequestPlayer)
                         });
                         
 
-                        console.log(teamOne);
-                        console.log(teamTwo);
-
                         startFight.addEventListener('click', function(){
                             fight();
                         });
@@ -170,11 +171,4 @@ fetch(myRequestPlayer)
 .catch(function(error) {
 console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
 });
-
-  
-    
-
- 
-    //const index = optionVehicule.selectedIndex; 
-
 

@@ -258,19 +258,18 @@ class manager {
         }
     }
 
-    public function update($perso)
+    public function update($player)
     {
-        // if Warrior
-        // ...
 
-        // elseif Wizard
-        // ...
+        $sql = $this -> bdd -> prepare("UPDATE `player` SET `level`=':level' WHERE 'name_Player'=$player->setNamePlayer()"); 
 
-        // elseif Ark
-        // ...
+        //$sql -> bindValue(":id", $player->getId(),PDO::PARAM_INT);
+        $sql -> bindValue(":level", $player->getLevel(), PDO::PARAM_INT);
 
-        // else unknown object
-        // ...
+        
+        $sql -> execute();
+
+        
     }
 
     public function delete($perso)

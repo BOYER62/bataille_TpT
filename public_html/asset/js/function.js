@@ -93,9 +93,10 @@ function filterByLife(obj) {
                 console.log(obj.name_hero +' est mort');
 
                 let slotTeamOne = teamOne.length - 1;
-                if (teamOne.length != 0) {       
+                if (teamOne.length > 1) {       
                     slot[slotTeamOne].src = '';
                 } else{
+                    slot[slotTeamOne].src = '';
                     console.log('Team one Perdu donc la team Two a gagné');
                     imgVictoryTeamTwo.classList.remove('hidden');
                 }
@@ -108,11 +109,13 @@ function filterByLife(obj) {
 
                 let slotTeamTwo = teamTwo.length + 4;
                 console.log(slotTeamTwo);
-                if (teamTwo.length != 0) { 
+                if (teamTwo.length > 1) { 
                 slot[slotTeamTwo].src = '';
                 } else {
+                    slot[slotTeamOne].src = '';
                     console.log('team Two lose donc la team One a gagné');
                     imgVictoryTeamOne.classList.remove('hidden');
+                    console.log(valueHero);
                 }
             }
         });
