@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body
+{
+    background-image: url('../../images/Background/102ab1178832229a153817e8820b87f8.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+} 
+.teamOne, .teamTwo
+{
+    opacity: 1;
+    margin-top: 40px;
+    border: 2px solid black;
+    height: 640px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.player
+{
+    margin-top: 30px;
+}
+
+.center
+{
+    display: flex;
+    justify-content: center;
+    align-self: flex-end;
+}
+
+/* select hero */
+.displayHeroSelect{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.displayHeroSelect div{
+    width: 45%;
+}
+
+.displayStatImageAboutHero{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 30px 0 30px 0;
+}
+.displayStatImageAboutHero div{
+    width: 45%;
+}
+
+.selectPlayerOnTeam{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 30px 0 30px 0;
+}
+.selectPlayerOnTeam div{
+    width: 45%;
+}
+
+.imgVaisseau
+{
+    margin: 50px 0;
+    width: 100%;
+    height: 20%;
+}
+.imgVaisseau img{
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+.hidden{
+    display: none;
+}

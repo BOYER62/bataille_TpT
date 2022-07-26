@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+    body
+{
+    background-image: url('../../images/Background/pixel-art-city-Idees-designs-photo.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} 
+.battle{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 70vh;
+}
+.teamOne, .teamTwo{
+    width: 45%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.slots{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.slot{
+    width: 120px;
+    height: 120px;
+    margin: 0 5px 0 5px;
+}
+.imgVaisseauTeamOne, .imgVaisseauTeamTwo{
+    width: 100%;
+    height: 60%;
+    position: relative;
+    bottom: 0px;
+    display: flex;
+    justify-content: center;
+}
+.imgVaisseauTeamOne img{
+    object-fit: fill;
+   
+}   
+button{
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0);
+    border: 0px solid rgba(255, 255, 255, 0);
+}
+button img{
+    width: 60px;
+    height: 60px;
+}
+.battleDetails{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 20%;
+    overflow: auto;
+    background-color: rgba(219, 219, 219, 0.87);
+}
+.reverse{
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+.fight{
+    background-color: rgba(66, 65, 65, 0.5);
+    text-align: center;
+    color: #f1f1f1;
+    font-size: 25px;
+    margin: 10px 0;
+}
+/* scroll bar style */
+/* width */
+::-webkit-scrollbar {
+    width: 14px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(53, 47, 47);
+    border-radius: 10px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(49, 49, 49);
+    border-radius: 10px;
+}
+
+.imgVictoryTeamOne{
+    width: 20%;
+    height: 55%;
+    position: absolute;
+    top: 10%; left: 15%;
+    background-image: url('../../images/victory.gif');
+    background-size: cover;
+}
+.imgVictoryTeamTwo{
+    width: 20%;
+    height: 55%;
+    position: absolute;
+    top: 10%; right: 15%;
+    background-image: url('../../images/victory.gif');
+    background-size: cover;
+}
+.hidden{
+    display: none;
+}
+.returnHome{
+    width: 20%;
+    height: 10%;
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    z-index: 100;
+}
+
