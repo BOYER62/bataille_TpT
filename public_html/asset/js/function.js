@@ -220,7 +220,7 @@ function filterByLife(obj) {
 
             teamTwo = teamTwo.filter(filterByLife);      
             console.log('Tableau teamTwo filtré', teamTwo); 
-
+            removeEmptySlot();
         }
     } else {
         console.log('else');
@@ -303,7 +303,7 @@ function filterByLife(obj) {
 
             teamTwo = teamTwo.filter(filterByLife);      
             console.log('Tableau teamTwo filtré', teamTwo);  
-
+            removeEmptySlot();
         }
     }
 }
@@ -313,4 +313,28 @@ async function returnHomeAndHealing(){
     soundhealing.play();
     await sleep(4100);
     window.location = 'index.php';
+}
+
+function removeEmptySlot(){
+    let g = 5 - teamOne.length;
+    let i = 4;
+
+    while (g > 0){
+  
+        slot[i].classList.add('hidden');
+        i--;
+        g--;
+
+    }
+    let h = 5 - teamTwo.length;
+    let j = 9;
+
+    while (h > 0){
+
+        slot[j].classList.add('hidden');
+        j--;
+        h--;
+
+    }
+
 }

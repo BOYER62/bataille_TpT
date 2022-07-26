@@ -156,6 +156,7 @@ fetch(myRequestPlayer)
                             }
                         });
                         
+                        removeEmptySlot();
 
                         startFight.addEventListener('click', function(){
                             if (getRandomInt(2) == 1){
